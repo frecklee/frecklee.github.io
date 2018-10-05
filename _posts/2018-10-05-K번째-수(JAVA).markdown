@@ -68,7 +68,8 @@ Arrays를 임포트해서 arraycopy랑 sort를 사용해서 간단하게 풀었�
 ##### **코드** #####
 
 
-```
+```JAVA
+
 import java.util.Arrays;
 
 class Solution {
@@ -87,5 +88,4 @@ class Solution {
         return answer;
     }
 }
-
 ```
