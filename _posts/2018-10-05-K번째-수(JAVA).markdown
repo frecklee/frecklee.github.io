@@ -63,9 +63,11 @@ Arrays를 임포트해서 arraycopy랑 sort를 사용해서 간단하게 풀었�
     - src는 복사할 배열, srcPos는 시작 인덱스, dest는 옮길 배열, destPos는 dest의 몇 번째 인덱스부터 복사 할 건지, length는 가져올 길이
 - public static void sort(int[] a)
     - 시간복잡도는 O(n log(n)), 오름차순으로 정렬된다.
-<br>
+
+
 ##### **코드** #####
-<br>
+
+
 ```
 import java.util.Arrays;
 
