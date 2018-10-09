@@ -1,0 +1,80 @@
+---
+layout: post
+title:  "[1065]한수(JAVA)"
+date:   2018-10-10 03:30:40 +0900
+categories: 알고리즘
+---
+#### ＃ 문제
+[백준]
+#### [[1065번]한수](https://www.acmicpc.net/problem/1065)  
+
+<details><summary >문제 보기</summary>
+<div style="font-size:0.7em;">
+
+**#문제**  
+
+어떤 양의 정수 X의 자리수가 등차수열을 이룬다면, 그 수를 한수라고 한다. 등차수열은 연속된 두 개의 수의 차이가 일정한 수열을 말한다. N이 주어졌을 때, 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력하는 프로그램을 작성하시오.   
+
+**#입력**  
+첫째 줄에 1,000보다 작거나 같은 자연수 N이 주어진다.  
+
+**#출력**  
+첫째 줄에 1보다 크거나 같고, N보다 작거나 같은 한수의 개수를 출력한다.  
+
+</div>
+</details>  
+
+<br>  
+
+#### # 풀이 ####    
+| 메모리 | 시간 |  
+|-------| ------|  
+| 12580KB | 124 ms |  
+
+
+ 너무 졸리기 때문에 내가 어떻게 풀었는 지 모르겠다. 코드도 거지같을 수 있다. 아마 그럴 확률 99%... 졸려서 깔끔하게 할 정신이 없다. 참고로 다른 사람 코드는 참고하지 않았다. 그래서 비효율적이고 거지같은 알고리즘이 탄생했을 수도 있다!    
+ 한수는 99, 111, 135 같은 것들을 말한다! 한 자리 수와 두 자리 수의 경우 모두 등차 수열이 되기 때문에 한수이다. 7같은 한 자리 수는 첫번째 항?이라서 등차수열이라고 생각했다. 두 자리 수인 87의 경우 8에서 7로 (-1)만큼 증가했기 때문에 등차수열이라고 생각했다. 137의 경우 첫째 자리와 둘째 자리의 차가 2이지만 둘째 자리와 셋째 자리의 수의 차가 4이기 때문에 등차수열도 안 되고 한수도 안 된다!
+   입력을 110이라고 준 경우에 출력은 99가 나오는데 한수가 1부터 99까지이기 때문이다. 앞에 예시를 살펴보면 세 자리 숫자부터 신경쓰면 되는데, 입력받은 값을 자리수별로 나누어 배열에 저장했다. 그리고 세자리 이상인 경우에만 첫째 자리와 둘째 자리의 차를 비교하고, 둘째 자리와 셋째 자리의 차를 비교(자리수를 늘려가며 계속 반복함)해서 같지 않은 경우에 false를 반환해주었다. 같은 경우에는 true를 반환하고 true의 갯수를 세서 출력했다.  <br><br>  
+
+
+- **코드**
+
+
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		int hap = 0;
+		for (int i = 1; i <= N; i++) {
+			String[] input = String.valueOf(i).split("");
+			boolean index = isHansu(input);
+			if (index == true)
+				hap++;
+		}
+		System.out.println(hap);
+	}
+
+	static boolean isHansu(String[] input) {
+		int[] number = new int[input.length];
+		for (int i = 0; i < input.length; i++)
+			number[i] = Integer.valueOf(input[i]);
+		for (int i = 0; i < number.length - 2; i++) {
+			if (number.length >= 3) {
+				if (number[i] - number[i + 1] != number[i + 1] - number[i + 2])
+					return false;
+
+			} else
+				return true;
+
+		}
+		return true;
+	}
+
+}
+```
