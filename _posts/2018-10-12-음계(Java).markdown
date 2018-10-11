@@ -1,0 +1,72 @@
+---
+layout: post
+title:  "[2920]음계(JAVA)"
+date:   2018-10-12 02:30:00 +0900
+categories: 알고리즘
+---
+#### ＃ 문제
+[백준]
+#### [[2920]음계](https://www.acmicpc.net/problem/2920)  
+
+<details><summary >문제 보기</summary>
+<div style="font-size:0.7em;">
+
+**#문제**  
+
+다장조는 c d e f g a b C, 총 8개 음으로 이루어져있다. 이 문제에서 8개 음은 다음과 같이 숫자로 바꾸어 표현한다. c는 1로, d는 2로, ..., C를 8로 바꾼다.
+
+1부터 8까지 차례대로 연주한다면 ascending, 8부터 1까지 차례대로 연주한다면 descending, 둘 다 아니라면 mixed 이다.
+연주한 순서가 주어졌을 때, 이것이 ascending인지, descending인지, 아니면 mixed인지 판별하는 프로그램을 작성하시오.
+
+
+**#입력**  
+첫째 줄에 8개 숫자가 주어진다. 이 숫자는 문제 설명에서 설명한 음이며, 1부터 8까지 숫자가 한 번씩 등장한다.  
+
+
+**#출력**  
+첫째 줄에 ascending, descending, mixed 중 하나를 출력한다.  
+
+
+</div>
+</details>  
+
+<br>  
+
+#### # 풀이 ####  
+
+| 메모리 | 시간 |
+|-------|------|
+| 11404KB | 112 ms |
+
+
+Arrays는 쓸모있는 게 많다. 배열이 같은 지 비교도 되네. 인터넷에서 찾아보니 계이름? 이런게 영어로 note라고 해서 변수명을 note라고 했다! t..m..i!!!! 근데 note가 아니라면 머쓱!  
+입력에 8개의 숫자가 주어진다고 했으니 note배열의 크기를 8로 넣었다. 그리고 Scanner를 통해 배열에 값을 집어넣었다. Arrays.equals 함수를 통해 입력받은 note배열이 오름차순인지 확인하여 맞으면 ascending, 내림차순이면 descending, 섞였으면 mixed를 출력했다.  
+배열을 비교할 때 미리 선언을 해서 비교를 할 까 하다가 한 줄 줄여보겠다고 배열을 비교하는 곳에 바로 선언을 해버렸지. 어떤게 더 빠른 지는 나도 모른당! <br>  
+
+- **코드**
+
+
+```java
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int note[] = new int[8];
+    // int note_asc[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+		// int note_desc[] = { 8,7,6,5,4,3,2,1 };
+		for (int i = 0; i < 8; i++) {
+			note[i] = sc.nextInt();
+		}
+		if (Arrays.equals(note, new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }))
+			System.out.println("ascending");
+		else if (Arrays.equals(note, new int[] { 8, 7, 6, 5, 4, 3, 2, 1 })) {
+			System.out.println("descending");
+		} else
+			System.out.println("mixed");
+	}
+
+}
+```
