@@ -1,0 +1,72 @@
+---
+layout: post
+title:  "[2675]문자열 반복(JAVA)"
+date:   2018-10-13 11:50:00 +0900
+categories: 알고리즘
+---
+#### ＃ 문제
+[백준]
+#### [[2675]문자열 반복](https://www.acmicpc.net/problem/2675)  
+
+<details><summary >문제 보기</summary>
+<div style="font-size:0.7em;">
+
+**#문제**  
+
+문자열 S를 입력받은 후에, 각 문자를 R번 반복해 새 문자열 P를 만든 후 출력하는 프로그램을 작성하시오. 즉, 첫 번째 문자를 R번 반복하고, 두 번째 문자를 R번 반복하는 식으로 P를 만들면 된다. S에는 QR Code "alphanumeric" 문자만 들어있다.  
+
+QR Code "alphanumeric" 문자는 <code>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\$%*+-./:</code> 이다.
+
+
+**#입력**  
+첫째 줄에 테스트 케이스의 개수 T(1 ≤ T ≤ 1,000)가 주어진다. 각 테스트 케이스는 반복 횟수 R(1 ≤ R ≤ 8), 문자열 S가 공백으로 구분되어 주어진다. S의 길이는 적어도 1이며, 20글자를 넘지 않는다.   
+
+
+
+**#출력**  
+각 테스트 케이스에 대해 P를 출력한다.  
+
+</div>
+</details>  
+
+<br>  
+
+#### # 풀이 ####  
+
+| 메모리 | 시간 |
+|-------|------|
+| 11480KB | 116 ms |
+
+
+ <br>  
+
+- **코드**
+갑자기 함수를 사용했다. for문을 조금만 쓴 척 하고 싶어서...? 하하하. 테스트 케이스 개수를 입력 받고 그 다음에 포문을 돌린다! 포문 안에서 문자열을 입력 받고 단어를 하나하나 쪼갠 뒤에 배열에 넣는다! 그 다음에는 loopwords라는 단어를 반복하는 함수를 호출한다. 호출이 다 끝났다면 개행해주었다! 함수는 배열을 S의 인덱스마다 r번씩 반복하는 역할을 한다. 으흐으음!  
+
+```java
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int testCaseNum = sc.nextInt();
+
+		for (int i = 0; i < testCaseNum; i++) {
+			int r = sc.nextInt();
+			String S[] = sc.next().trim().split("");
+			loopWords(S, r);
+			System.out.println();
+		}
+
+	}
+
+	static void loopWords(String[] S, int r) {
+		for (int i = 0; i < S.length; i++) {
+			for (int j = 0; j < r; j++)
+				System.out.print(S[i]);
+		}
+	}
+
+}
+```
